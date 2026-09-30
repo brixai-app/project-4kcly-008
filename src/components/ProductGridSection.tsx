@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Search, Filter, Sliders, X, Tag as TagIcon, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { mockAssets } from '@/data/mockData';
+import { products } from '@/data/mockData';
 
 export type ProductGridSectionProps = {
   heading?: string;
@@ -236,7 +236,18 @@ export function ProductGridSection(props: ProductGridSectionProps = {}) {
   const [selected, setSelected] = useState<Asset | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
-  const assets = (mockAssets as Asset[]) ?? [];
+  const assets: Asset[] = (products ?? []).map((p) => ({
+    id: p.id,
+    title: p.name,
+    description: p.description ?? 'A captured look from the evolving Kendrick & Drake timeline.',
+    imageUrl:
+      p.image ??
+      'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80',
+    category: p.category ?? 'Archive',
+    era: '2011–2024',
+    tags: ['studio', 'tour', 'candid'],
+    highlight: 'An imagined fit that bridges their distinct eras with a shared visual language.',
+  }));
   const tags = useMemo(
     () =>
       Array.from(

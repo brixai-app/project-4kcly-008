@@ -1,5 +1,5 @@
+import { Link } from 'lucide-react';
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 export type FooterSectionProps = {
   brandName?: string;
@@ -35,13 +35,13 @@ export function FooterSection(props: FooterSectionProps = {}) {
           >
             Contact
           </a>
-          <Link
-            to="/"
+          <a
+            href="#hero"
             className="px-3 py-1 rounded-full text-xs font-medium border"
             style={{ borderColor: '#e11d4833', color: '#18181b' }}
           >
             Back to Top
-          </Link>
+          </a>
         </div>
       </div>
     </footer>
